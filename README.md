@@ -39,7 +39,7 @@ The Piet interpreter moves a pointer through these color blocks. Every time the 
 | **(1,5)-(5,5)** | <font color="#FFFFFF">**White**</font> | — | **Return Rail**. Slides the pointer back to `(0,5)`. |
 
 
-# Resources: *Ist das Kunst, Mathe oder kann das Weg? (Art, Math or Trash?)*
+# Resources: *Ist das Kunst, Mathe oder kann das Weg?*
 
 - [Original Specification](https://www.dangermouse.net/esoteric/piet.html)
 - [Piet Sample Gallery](https://www.dangermouse.net/esoteric/piet/samples.html)
