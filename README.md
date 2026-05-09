@@ -6,7 +6,7 @@
 
 Piet is an esoteric language where code is an abstract painting. This generator literally looks like the sequence it creates.
 
-The painting above is a $377 \times 233$ tiling. Every block size is a Fibonacci number, spiraling into a sunset orange center. The actual code is the tiny $12 \times 10$ block in the top-left corner. We will go through the logic pixel-by-pixel below.
+The painting/code ^^ above is a $377 \times 233$ tiling. Every block size is a Fibonacci number, spiraling into a sunset orange center. The actual code is the tiny $12 \times 10$ block in the top-left corner. We will go through the logic pixel-by-pixel below.
 
 
 ## The Logic ![Minimalist](fib_minimal.png)
