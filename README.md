@@ -4,9 +4,9 @@
 
 # Piet-bonacci
 
-Piet is an esoteric language where code is an abstract painting. This generator literally looks like the sequence it creates.
+Piet is an esoteric language where code is an Mondrian-esque painting ([if you put in enough care](https://kylewoodward.com/current/piet-prime-tester/). The idea behind this repo was for code to look like the sequence it creates. 
 
-The painting/code ^^ above is a $377 \times 233$ tiling. Every block size is a Fibonacci number, spiraling into a sunset orange center. The actual code is the tiny $12 \times 10$ block in the top-left corner. We will go through the logic pixel-by-pixel below.
+The painting/code ^^ above is a $377 \times 233$ tiling. Every block size is a Fibonacci number, spiraling into a sunset orange center. The actual code is the tiny $12 \times 10$ block in the top-left corner. We will go through the logic pixel-by-pixel below. You can actually create pretty code without this trick, check out the Gallery linked below.
 
 
 ## The Logic ![Minimalist](fib_minimal.png)
