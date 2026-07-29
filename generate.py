@@ -1,4 +1,5 @@
-import os
+import struct
+import zlib
 
 # Standard Piet Palette
 colors = {
@@ -50,12 +51,17 @@ def apply_math_logic(image, bg_color, cw=1, ch=1):
     # Bumpers
     fill(0, 11, colors['B']); fill(9, 10, colors['B']); fill(8, 4, colors['B'])
 
-def save_ppm(filename, image, width, height):
-    with open(filename, "w") as f:
-        f.write(f"P3\n{width} {height}\n255\n")
-        for row in image:
-            for c in row: f.write(f"{c[0]} {c[1]} {c[2]} ")
-            f.write("\n")
+def save_png(filename, image, width, height):
+    # Minimal PNG writer (8-bit truecolor, no filters) - stdlib only, runs anywhere
+    def chunk(typ, data):
+        return struct.pack(">I", len(data)) + typ + data + struct.pack(">I", zlib.crc32(typ + data) & 0xFFFFFFFF)
+    raw = b"".join(b"\x00" + bytes(c for px in row for c in px) for row in image)
+    ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+    with open(filename, "wb") as f:
+        f.write(b"\x89PNG\r\n\x1a\n")
+        f.write(chunk(b"IHDR", ihdr))
+        f.write(chunk(b"IDAT", zlib.compress(raw, 9)))
+        f.write(chunk(b"IEND", b""))
 
 def generate():
     # 1. Aesthetic
@@ -76,13 +82,13 @@ def generate():
     draw_rect(aesthetic, 267, 165, 5, 5, palette['S9'])
     draw_rect(aesthetic, 272, 165, 3, 3, palette['S10'])
     apply_math_logic(aesthetic, palette['S1'])
-    save_ppm("fib_aesthetic.ppm", aesthetic, w, h)
+    save_png("fib_aesthetic.png", aesthetic, w, h)
 
     # 2. Minimalist
     mw, mh = 12, 10
     mini = [[colors['B'] for _ in range(mw)] for _ in range(mh)]
     apply_math_logic(mini, colors['B'])
-    save_ppm("fib_minimal.ppm", mini, mw, mh)
+    save_png("fib_minimal.png", mini, mw, mh)
 
     # 3. Logic Grid (Upscaled)
     scale = 40
@@ -111,10 +117,6 @@ def generate():
     for j in range(1, 6): fill_grid(j, 5, colors['W'])
     fill_grid(0, 11, colors['B']); fill_grid(9, 10, colors['B']); fill_grid(8, 4, colors['B'])
     
-    save_ppm("fib_logic_grid.ppm", grid, gw, gh)
+    save_png("fib_logic_grid.png", grid, gw, gh)
 
 generate()
-os.system("sips -s format png fib_aesthetic.ppm --out fib_aesthetic.png")
-os.system("sips -s format png fib_minimal.ppm --out fib_minimal.png")
-os.system("sips -s format png fib_logic_grid.ppm --out fib_logic_grid.png")
-os.system("rm *.ppm")

@@ -4,7 +4,7 @@
 
 # Piet-bonacci
 
-Piet is an esoteric language where code is an Mondrian-esque painting ([if you put in enough care](https://kylewoodward.com/current/piet-prime-tester/)). The idea behind this repo was for code to look like the sequence it creates. 
+Piet is an esoteric language where code is a Mondrian-esque painting ([if you put in enough care](https://kylewoodward.com/current/piet-prime-tester/)). The idea behind this repo was for code to look like the sequence it creates. 
 
 The painting/code ^^ above is a $377 \times 233$ tiling. Every block size is a Fibonacci number, spiraling into a sunset orange center. The actual code is the tiny $12 \times 10$ block in the top-left corner. We will go through the logic pixel-by-pixel below. You can actually create pretty code without this trick, check out the Gallery linked below.
 
@@ -39,6 +39,14 @@ The Piet interpreter moves a pointer through these color blocks. Every time the 
 | **(1,5)-(5,5)** | <font color="#FFFFFF">**White**</font> | — | **Return Rail**. Slides the pointer back to `(0,5)`. |
 
 
+# Regenerating the images
+
+All three images are drawn by [`generate.py`](generate.py) — pure standard library, no dependencies:
+
+```bash
+python3 generate.py
+```
+
 # Resources: *Ist das Kunst, Mathe oder kann das Weg?*
 
 - [Original Specification](https://www.dangermouse.net/esoteric/piet.html)
@@ -46,6 +54,6 @@ The Piet interpreter moves a pointer through these color blocks. Every time the 
 - [Esolang Wiki](https://esolangs.org/wiki/Piet)
 - [Piet Video Breakdown](https://www.youtube.com/watch?v=IcmCvT5whk0)
 - [Good Write Up](https://lutter.cc/piet/)
-- [Piet is Turing-complete (THE PROOF WILL SUPRISE YOU)](https://mamememo.blogspot.com/2009/10/piet-is-turing-complete.html)
+- [Piet is Turing-complete (THE PROOF WILL SURPRISE YOU)](https://mamememo.blogspot.com/2009/10/piet-is-turing-complete.html)
 ---
 
