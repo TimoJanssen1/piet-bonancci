@@ -41,6 +41,7 @@ The Piet interpreter moves a pointer through these color blocks. Every time the 
 
 # Resources: *Ist das Kunst, Mathe oder kann das Weg?*
 
+- [Piet IDE](https://gabriellesc.github.io/piet/) (browser editor + debugger; this program was designed in it)
 - [Original Specification](https://www.dangermouse.net/esoteric/piet.html)
 - [Piet Sample Gallery](https://www.dangermouse.net/esoteric/piet/samples.html)
 - [Esolang Wiki](https://esolangs.org/wiki/Piet)
